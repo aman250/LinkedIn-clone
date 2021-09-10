@@ -1,11 +1,16 @@
 import React from "react";
 import "./App.css";
 import Header from "./components/Header";
+import Siderbar from "./components/Siderbar";
 
 function App() {
   return (
     <div className="app">
       <Header />
+      <div className="app_body">
+        {/* SideBar */}
+        <Siderbar />
+      </div>
     </div>
   );
 }

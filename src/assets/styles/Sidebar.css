@@ -1,0 +1,71 @@
+.sidebarLeft_Main {
+  flex: 0.2;
+  margin-left: 5%;
+}
+.sidebarLeft {
+  background-color: white;
+  border-radius: 5px;
+  text-align: center;
+  border: 0.1px solid #dfdedb;
+}
+.sidebarLeft > img {
+  object-fit: cover;
+  width: 100%;
+  margin-bottom: -30px;
+  height: 80px;
+}
+.sidebarLeft > div > h4 {
+  font-size: 16px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.sidebarLeft > div > p {
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+.avatarContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+}
+.sidebarLeft_stats > p {
+  font-size: 12px;
+}
+
+.sidebarLeft_stats {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+}
+.sidebarLeft_stats:hover {
+  cursor: pointer;
+  background-color: #f2f1ee;
+}
+.number_stats {
+  color: #4475c6;
+  font-weight: 600;
+}
+.sidebarLeft_Recent {
+  margin-top: 10px;
+  background-color: white;
+  border-radius: 5px;
+  border: 0.1px solid #dfdedb;
+}
+.sidebarLeft_Recent > div > p {
+  font-size: 14px;
+  color: gray;
+  padding: 5px 10px;
+}
+.sidebarLeft_Recent > h4 {
+  font-size: 14;
+  color: gray;
+  padding: 5px 10px;
+  font-weight: bold;
+}
+.hashtags:hover {
+  cursor: pointer;
+  background-color: #f2f1ee;
+  color: black;
+}
