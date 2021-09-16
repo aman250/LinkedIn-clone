@@ -8,18 +8,30 @@ const Feeds = () => {
   const [Posts, setPosts] = useState([]);
   useEffect(() => {
     db.collection("posts")
-      .get()
-      .then((result) => result.docs)
-      .then((docs) =>
-        docs.map((doc) => ({
-          Avatar: doc.data().Avatar,
-          Description: doc.data().Description,
-          Message: doc.data().Message,
-          Name: doc.data().Name,
-        }))
-      )
-      .then((posts) => setPosts(posts))
-      .catch((err) => console.log(err));
+      .orderBy("publishedAt", "desc")
+      .onSnapshot((snapshot) =>
+        setPosts(
+          snapshot.docs.map((doc) => ({
+            Avatar: doc.data().Avatar,
+            Description: doc.data().Description,
+            Message: doc.data().Message,
+            Name: doc.data().Name,
+          }))
+        )
+      );
+    // db.collection("posts")
+    //   .get()
+    //   .then((result) => result.docs)
+    //   .then((docs) =>
+    //     docs.map((doc) => ({
+    //       Avatar: doc.data().Avatar,
+    //       Description: doc.data().Description,
+    //       Message: doc.data().Message,
+    //       Name: doc.data().Name,
+    //     }))
+    //   )
+    //   .then((posts) => setPosts(posts))
+    //   .catch((err) => console.log(err));
   }, []);
 
   useEffect(() => {
@@ -32,7 +44,7 @@ const Feeds = () => {
       {Posts &&
         Posts.map((post) => (
           <FeedPosts
-            Avatar={post.Avatar}
+            AvatarURL={post.Avatar}
             Description={post.Description}
             Message={post.Message}
             Name={post.Name}

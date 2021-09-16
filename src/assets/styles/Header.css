@@ -53,4 +53,6 @@
   border-bottom: 0.1px solid gray;
   position: sticky;
   top: 0px;
+  background-color: white;
+  z-index: 100;
 }

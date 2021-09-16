@@ -7,6 +7,7 @@ import YouTubeIcon from "@material-ui/icons/YouTube";
 import EventAvailableIcon from "@material-ui/icons/EventAvailable";
 import AssignmentIcon from "@material-ui/icons/Assignment";
 import { db } from "../firebase";
+import firebase from "firebase";
 
 const FeedsInput = () => {
   const [EnteredPost, setEnteredPost] = useState("");
@@ -18,12 +19,17 @@ const FeedsInput = () => {
     e.preventDefault();
     db.collection("posts")
       .add({
-        postMessage: EnteredPost,
+        Name: "Aman Mohsin",
+        Description: "I am a Software Engineer",
+        Message: EnteredPost,
+        Avatar: "",
+        publishedAt: firebase.firestore.FieldValue.serverTimestamp(),
       })
-      .then(() => alert("Data saved successfully in the database"))
       .catch(() =>
         alert("OOPS! there was an error storing the data on the database.")
       );
+
+    setEnteredPost("");
   };
 
   return (
