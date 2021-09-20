@@ -19,24 +19,7 @@ const Feeds = () => {
           }))
         )
       );
-    // db.collection("posts")
-    //   .get()
-    //   .then((result) => result.docs)
-    //   .then((docs) =>
-    //     docs.map((doc) => ({
-    //       Avatar: doc.data().Avatar,
-    //       Description: doc.data().Description,
-    //       Message: doc.data().Message,
-    //       Name: doc.data().Name,
-    //     }))
-    //   )
-    //   .then((posts) => setPosts(posts))
-    //   .catch((err) => console.log(err));
   }, []);
-
-  useEffect(() => {
-    console.log(Posts);
-  }, [Posts]);
 
   return (
     <div className="feedsContainer">
