@@ -8,8 +8,11 @@ import EventAvailableIcon from "@material-ui/icons/EventAvailable";
 import AssignmentIcon from "@material-ui/icons/Assignment";
 import { db } from "../firebase";
 import firebase from "firebase";
+import { selectUser } from "../features/userSlice";
+import { useSelector } from "react-redux";
 
 const FeedsInput = () => {
+  const user = useSelector(selectUser);
   const [EnteredPost, setEnteredPost] = useState("");
 
   const InputChangehandler = (event) => {
@@ -19,10 +22,10 @@ const FeedsInput = () => {
     e.preventDefault();
     db.collection("posts")
       .add({
-        Name: "Aman Mohsin",
-        Description: "I am a Software Engineer",
+        Name: user.FullName,
+        Description: user.Email,
         Message: EnteredPost,
-        Avatar: "",
+        Avatar: user.ProfileURL == null ? "" : user.ProfileURL,
         publishedAt: firebase.firestore.FieldValue.serverTimestamp(),
       })
       .catch(() =>

@@ -2,8 +2,11 @@ import { Avatar } from "@material-ui/core";
 import React from "react";
 import "../assets/styles/Sidebar.css";
 import Background from "../assets/Images/bgImage.jpeg";
+import { useSelector } from "react-redux";
+import { selectUser } from "../features/userSlice";
 
 const Siderbar = () => {
+  const user = useSelector(selectUser);
   const RecentItems = ({ title }) => {
     return (
       <div>
@@ -11,16 +14,19 @@ const Siderbar = () => {
       </div>
     );
   };
+
   return (
     <div className="sidebarLeft_Main">
       <div className="sidebarLeft">
         <img src={Background} />
         <div className="avatarContainer">
-          <Avatar />
+          {user.FullName != undefined && (
+            <Avatar src={user.ProfileURL}>{user.FullName[0]}</Avatar>
+          )}
         </div>
         <div style={{ borderBottom: "0.1px solid #dfdedb" }}>
-          <h4>Aman Mohsin</h4>
-          <p>amanmohsin250@gmail.com</p>
+          <h4>{user.FullName}</h4>
+          <p>{user.Email}</p>
         </div>
         <div className="sidebarLeft_stats">
           <p className="display_stats">Who Viewed your profile</p>

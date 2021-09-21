@@ -11,14 +11,16 @@ const Login = () => {
   const [ProfileURL, setProfileURL] = useState("");
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
+  const [LoginEmail, setLoginEmail] = useState("");
+  const [LoginPassword, setLoginPassword] = useState("");
   const SignupHandler = () => {
     if (FullName != "" && Email != "" && Password != "") {
       auth
         .createUserWithEmailAndPassword(Email, Password)
         .then((userAuth) =>
           userAuth.user.updateProfile({
-            FullName: FullName,
-            ProfileURL: ProfileURL,
+            displayName: FullName,
+            photoURL: ProfileURL,
           })
         )
         .then(() =>
@@ -33,6 +35,20 @@ const Login = () => {
         .catch((err) => console.log(err));
     }
   };
+  const LoginHandler = () => {
+    auth
+      .signInWithEmailAndPassword(LoginEmail, LoginPassword)
+      .then((userAuth) =>
+        dispatch(
+          login({
+            Email: userAuth.email,
+            FullName: userAuth.displayName,
+            ProfileURL: userAuth.photoURL,
+          })
+        )
+      )
+      .catch((err) => console.log(err));
+  };
   return (
     <div className="LoginContainer">
       <img
@@ -42,10 +58,20 @@ const Login = () => {
       {LoginPage ? (
         <>
           <form>
-            <input type="email" placeholder="Enter Email" />
-            <input type="password" placeholder="Enter Password" />
+            <input
+              type="email"
+              value={LoginEmail}
+              onChange={(e) => setLoginEmail(e.target.value)}
+              placeholder="Enter Email"
+            />
+            <input
+              type="password"
+              value={LoginPassword}
+              onChange={(e) => setLoginPassword(e.target.value)}
+              placeholder="Enter Password"
+            />
           </form>
-          <button>Login</button>
+          <button onClick={LoginHandler}>Login</button>
           <p>
             Are you a new user?{" "}
             <span className="register_link" onClick={() => setLoginPage(false)}>
