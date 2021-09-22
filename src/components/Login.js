@@ -8,7 +8,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const [LoginPage, setLoginPage] = useState(true);
   const [FullName, setFullName] = useState("");
-  const [ProfileURL, setProfileURL] = useState("");
+  const [ProfileURL, setProfileURL] = useState(null);
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const [LoginEmail, setLoginEmail] = useState("");

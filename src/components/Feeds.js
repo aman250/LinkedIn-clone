@@ -3,6 +3,7 @@ import FeedsInput from "./FeedsInput";
 import FeedPosts from "./FeedPosts";
 import { db } from "../firebase";
 import "../assets/styles/Feeds.css";
+import FlipMove from "react-flip-move";
 
 const Feeds = () => {
   const [Posts, setPosts] = useState([]);
@@ -16,23 +17,26 @@ const Feeds = () => {
             Description: doc.data().Description,
             Message: doc.data().Message,
             Name: doc.data().Name,
+            id: doc.id,
           }))
         )
       );
   }, []);
-
   return (
     <div className="feedsContainer">
       <FeedsInput />
-      {Posts &&
-        Posts.map((post) => (
-          <FeedPosts
-            AvatarURL={post.Avatar}
-            Description={post.Description}
-            Message={post.Message}
-            Name={post.Name}
-          />
-        ))}
+      <FlipMove>
+        {Posts &&
+          Posts.map((post) => (
+            <FeedPosts
+              key={post.id}
+              AvatarURL={post.Avatar}
+              Description={post.Description}
+              Message={post.Message}
+              Name={post.Name}
+            />
+          ))}
+      </FlipMove>
     </div>
   );
 };

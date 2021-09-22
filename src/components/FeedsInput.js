@@ -38,7 +38,7 @@ const FeedsInput = () => {
   return (
     <div className="feedsInput_container">
       <div className="feedsInput_writePost">
-        <Avatar />
+        <Avatar src={user.ProfileURL}></Avatar>
         <div className="feedsInput_textContainer">
           <form>
             <input

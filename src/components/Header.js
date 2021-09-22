@@ -20,6 +20,7 @@ const Header = () => {
     auth.signOut();
     dispatch(logout());
   };
+  console.log(user);
   return (
     <div className="header">
       <div className="header_left">
